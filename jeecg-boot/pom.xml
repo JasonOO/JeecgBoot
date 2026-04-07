@@ -283,7 +283,7 @@
 				<artifactId>jeecg-boot-starter-mongon</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
-			<!--人大金仓驱动 版本号V008R006C005B0013 -->
+			<!--人大金仓驱动-->
 			<dependency>
 				<groupId>org.jeecgframework</groupId>
 				<artifactId>kingbase8</artifactId>
