@@ -213,7 +213,14 @@ export const useUserStore = defineStore({
         // 代码逻辑说明: 【issues/1102】设置单点登录后页面，进入首页提示404，也没有绘制侧边栏 #1102---
         let ticket = getUrlParam('ticket');
         if(ticket){
-          goHome && (window.location.replace((userInfo && userInfo.homePath) || PageEnum.BASE_HOME));
+          let goPath = ((userInfo && userInfo.homePath) || PageEnum.BASE_HOME) as string;
+          let basePath = router.options.history.base || '';
+          if (basePath && basePath !== '/') {
+            if (basePath.endsWith('/')) basePath = basePath.substring(0, basePath.length - 1);
+            if (!goPath.startsWith('/')) goPath = '/' + goPath;
+            goPath = basePath + goPath;
+          }
+          goHome && (window.location.replace(goPath));
         }else{
           goHome && (await router.replace((userInfo && userInfo.homePath) || PageEnum.BASE_HOME));
         }

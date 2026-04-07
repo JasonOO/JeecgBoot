@@ -8,7 +8,7 @@ const globSetting = useGlobSetting();
 const openSso = globSetting.openSso;
 export function useSso() {
   // 代码逻辑说明: 【QQYUN-7805】SSO登录强制用http #957---
-  let locationUrl = document.location.protocol +"//" + window.location.host + '/';
+  let locationUrl = document.location.protocol +"//" + window.location.host + window.location.pathname;
 
   /**
    * 单点登录
